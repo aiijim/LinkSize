@@ -16,10 +16,10 @@
 
 - (instancetype) initWithFileName:(NSString*)fileName NS_DESIGNATED_INITIALIZER;
 
+//解析linkmap文件
 - (void) parse;
 
-- (NSInteger) getLibrarySizeInApp:(NSString*)libName;
-
-- (NSArray*) getAllLibraryName;
+//获取linkmap文件分析日志，html格式
+- (NSString*) getFileAnalyzeLog;
 
 @end

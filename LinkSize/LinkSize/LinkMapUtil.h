@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* const LIB_KEY;
+extern NSString* const OUTPUT_KEY;
 extern NSString* const FILE_KEY;
 
 @interface LinkMapUtil : NSObject
@@ -18,5 +18,7 @@ extern NSString* const FILE_KEY;
 + (NSDictionary*) parseParameter:(int)argc argv:(const char* [])argv;
 
 + (NSString*) getDescStr:(NSInteger) totalSize;
+
++ (int) hexStringToInt:(NSString*)hexString;
 
 @end

@@ -8,47 +8,60 @@
 
 #import "LinkMapUtil.h"
 
-NSString* const LIB_KEY = @"lib";
+NSString* const OUTPUT_KEY = @"output";
 NSString* const FILE_KEY = @"file";
 
 @implementation LinkMapUtil
 
 + (void) printHelp
 {
-    NSLog(@"Usage: LinkSize -%@ [libname ...] -%@ [linkmapfile ...] or LinkSize -%@ [linkmapfile ...] -%@ [libname ...]", LIB_KEY, FILE_KEY,FILE_KEY, LIB_KEY);
+    NSLog(@"Usage: LinkSize -%@ linkmapfile [-%@ logFile] or LinkSize [-%@ logFile] -%@ linkmapfile", FILE_KEY, OUTPUT_KEY, OUTPUT_KEY, FILE_KEY);
 }
 
 + (NSDictionary*) parseParameter:(int)argc argv:(const char* [])argv
 {
+    NSDictionary* resultDict = nil;
+    if (argc != 3 && argc != 5)
+    {
+        return resultDict;
+    }
+    
     NSMutableDictionary* paramDict = [NSMutableDictionary dictionary];
     NSString* lastKey = nil;
-    for (int i = 1; i < argc; i++)
+    BOOL isValid = NO;
+    for (int i = 1; (i + 1) < argc; i+=2)
     {
         if (*argv[i] == '-')
         {
-            NSMutableArray* fileArr = [NSMutableArray array];
             lastKey = [NSString stringWithCString:(argv[i] + 1) encoding:NSUTF8StringEncoding];
-            [paramDict setObject:fileArr forKey:lastKey];
+            NSString* value = [NSString stringWithCString:argv[i+1] encoding:NSUTF8StringEncoding];
+            
+            if ([lastKey isEqualToString:FILE_KEY])
+            {
+                [paramDict setObject:value forKey:lastKey];
+                isValid = YES;
+            }
+            else if([lastKey isEqualToString:OUTPUT_KEY])
+            {
+                [paramDict setObject:value forKey:lastKey];
+            }
+            else
+            {
+                isValid = NO;
+                break;
+            }
         }
         else
         {
-            if ( !lastKey || ![paramDict objectForKey:lastKey])
-            {
-                return nil;
-            }
-            
-            [[paramDict objectForKey:lastKey] addObject:[NSString stringWithCString:argv[i] encoding:NSUTF8StringEncoding]];
+            isValid = NO;
+            break;
         }
     }
-    
-    NSSet * keySet = [NSSet setWithObjects:LIB_KEY, FILE_KEY,nil];
-    NSArray* allKey = [paramDict allKeys];
-    NSDictionary* resultDict = nil;
-    if ([[paramDict objectForKey:LIB_KEY] count] > 0 && [[paramDict objectForKey:FILE_KEY] count] > 0 && [[NSSet setWithArray:allKey] isSubsetOfSet:keySet])
+
+    if (isValid)
     {
         resultDict = [paramDict copy];
     }
-
     return resultDict;
 }
 
@@ -74,5 +87,15 @@ NSString* const FILE_KEY = @"file";
     
     return desc;
 }
+
+
++ (int) hexStringToInt:(NSString*)hexString
+{
+    int outVal;
+    NSScanner* scanner = [NSScanner scannerWithString:hexString];
+    [scanner scanHexInt:(unsigned int*)&outVal];
+    return outVal;
+}
+
 
 @end

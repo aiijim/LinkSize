@@ -10,6 +10,7 @@
 		302958561D71640300B0BEDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 302958551D71640300B0BEDC /* main.m */; };
 		3029585E1D71643A00B0BEDC /* LinkMapParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3029585D1D71643A00B0BEDC /* LinkMapParse.m */; };
 		302958611D71948100B0BEDC /* LinkMapUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 302958601D71948100B0BEDC /* LinkMapUtil.m */; };
+		304E9E7F1E542B87001CB9B0 /* ObjectLinkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E9E7E1E542B87001CB9B0 /* ObjectLinkModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		3029585D1D71643A00B0BEDC /* LinkMapParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkMapParse.m; sourceTree = "<group>"; };
 		3029585F1D71948100B0BEDC /* LinkMapUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkMapUtil.h; sourceTree = "<group>"; };
 		302958601D71948100B0BEDC /* LinkMapUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkMapUtil.m; sourceTree = "<group>"; };
+		304E9E7D1E542B87001CB9B0 /* ObjectLinkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectLinkModel.h; sourceTree = "<group>"; };
+		304E9E7E1E542B87001CB9B0 /* ObjectLinkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectLinkModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				3029585D1D71643A00B0BEDC /* LinkMapParse.m */,
 				3029585F1D71948100B0BEDC /* LinkMapUtil.h */,
 				302958601D71948100B0BEDC /* LinkMapUtil.m */,
+				304E9E7D1E542B87001CB9B0 /* ObjectLinkModel.h */,
+				304E9E7E1E542B87001CB9B0 /* ObjectLinkModel.m */,
 			);
 			path = LinkSize;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			files = (
 				3029585E1D71643A00B0BEDC /* LinkMapParse.m in Sources */,
 				302958611D71948100B0BEDC /* LinkMapUtil.m in Sources */,
+				304E9E7F1E542B87001CB9B0 /* ObjectLinkModel.m in Sources */,
 				302958561D71640300B0BEDC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
