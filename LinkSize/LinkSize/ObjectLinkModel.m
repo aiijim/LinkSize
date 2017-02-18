@@ -36,6 +36,11 @@
 {
     if ([symbol length] > 0)
     {
+        NSNumber* sizeNum = [self.symbolsContainer objectForKey:symbol];
+        if (sizeNum)
+        {
+            size += [sizeNum integerValue];
+        }
         [self.symbolsContainer setObject:[NSNumber numberWithInt:size] forKey:symbol];
     }
 }
