@@ -214,8 +214,16 @@ const static int MAXSIZE = 4096;
 - (NSString*) getFileAnalyzeLog
 {
     NSString* html = [NSString stringWithCString:htmlHeader encoding:NSUTF8StringEncoding];
-    html = [html stringByReplacingOccurrencesOfString:@"@BinFileName@" withString:self.binFileName];
-    html = [html stringByReplacingOccurrencesOfString:@"@Arch@" withString:self.arch];
+    
+    if (self.binFileName)
+    {
+        html = [html stringByReplacingOccurrencesOfString:@"@BinFileName@" withString:self.binFileName];
+    }
+    
+    if (self.arch)
+    {
+        html = [html stringByReplacingOccurrencesOfString:@"@Arch@" withString:self.arch];
+    }
     
     NSString* objDiv = [NSString stringWithCString:objectDivHeader encoding:NSUTF8StringEncoding];
     
